@@ -1,0 +1,51 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+.one {
+	width: 800px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #ccc;
+	padding: 50px;
+	margin: 10px auto;
+
+}
+.two {
+	color: #333;
+	font-size: 20px;
+}
+.three {
+	display: inline-block;
+	color: #999;
+	font-size: 14px;
+	line-height: 70px;
+}
+a {
+	color: #999;
+	text-decoration: none;
+}
+a:hover {
+	color: blue;
+}
+.four{
+	font-size: 22px;
+	text-align: center;
+}
+.five{
+	color: #666;
+	font-size: 14px;
+	text-align: center;
+	line-height: 70px;
+}
+.six{
+	text-indent: 2em;
+	line-height: 1.5em;
+}
+.seven{
+	text-align: center;
+}
+img {
+	height: 400px;
+	width: 400px;
+}
