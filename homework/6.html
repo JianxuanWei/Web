@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #zhengti{
+            height: 500px;
+            width: 500px;
+            margin: 0 auto;
+        }
+        #before{
+            border: 1px solid black;
+            height: 500px;
+            width: 500px;
+            background: gray;
+            position: absolute;
+            top: 0;
+        }
+        #dati{
+            position: absolute;
+            top: 90px;
+            left: 180px;
+        }
+        #jilu{
+            position: absolute;
+            top: 90px;
+            left: 250px;
+        }
+        #begin{
+            display: none;
+            border: 1px solid black;
+            height: 500px;
+            width: 500px;
+            position: absolute;
+            top: 0;
+        }
+        #time{
+            position: absolute;
+            top: 10px;
+            left: 50px;
+        }
+        #score{
+            position: absolute;
+            top: 10px;
+            right: 50px;
+        }
+        #number{
+            position: absolute;
+            top: 100px;
+            left: 50px;
+        }
+        #daan{
+            position: absolute;
+            top: 115px;
+            right: 200px;
+        }
+        #tijiao{
+            position: absolute;
+            top: 170px;
+            left: 50px;
+        }
+        #lastjilu{
+            overflow: auto;
+            position: absolute;
+            top: 150px;
+            left: 130px;
+            width: 300px;
+            height: 250px;
+            display: none;
+        }
+        #timu{
+            display: none;
+            width: 150px;
+            height: 250px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #buer{
+            display: none;
+            width: 80px;
+            height: 250px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="zhengti">
+        <div id="before">
+            <button id="dati">开始答题</button>
+            <button id="jilu">答题记录</button>
+            <div id="lastjilu">
+                <div id = "timu"></div>
+                <div id = "buer"></div>
+            </div>
+        </div>
+        <div id="begin">
+            <p id="time">倒计时：30</p>
+            <p id="score">得分：0</p>
+            <p id="number"></p>
+            <input type="text" id="daan">
+            <button id="tijiao">提交答案</button>
+        </div>
+    </div>
+</body>
+<script>
+    var dati = document.getElementById("dati");
+    var before = document.getElementById("before");
+    var begin = document.getElementById("begin");
+    var time = document.getElementById("time");
+    var daan = document.getElementById("daan");
+    var number = document.getElementById("number");
+    var tijiao = document.getElementById("tijiao");
+    var score = document.getElementById("score");
+    var lastjilu = document.getElementById("lastjilu");
+    var jilu = document.getElementById("jilu");
+    var timu = document.getElementById("timu");
+    var buer = document.getElementById("buer");
+    var num1, num2, all = 0;
+    //答题事件
+    dati.onclick = function(){
+        //设置时间
+        var time1 = 29;
+        //隐藏开始界面和答题记录
+        lastjilu.style.display = "none";
+        before.style.display = "none";
+        //显示答题界面
+        begin.style.display = "inline-block";
+        //自动获取焦点
+        daan.focus();
+        //清空文本框和答题记录，初始得分为零
+        all = 0;
+        timu.innerHTML = "";
+        buer.innerHTML = "";
+        daan.value = "";
+        score.innerHTML = "得分：" + all;
+        //随机分配两个值
+        num1 = parseInt(Math.random() * 101);
+        num2 = parseInt(Math.random() * 101);
+        number.innerHTML = num1 + "+" + num2 + "=";
+        //倒计时函数
+        var outtime = function(){
+            time1--;     
+            time.innerHTML ="倒计时：" + time1;
+            if(time1 <= 0){
+                clearInterval(shijian);
+                before.style.display = "inline-block";
+                begin.style.display = "none";
+            }   
+        }
+        var shijian = setInterval(outtime,1000);
+    }
+    //提交事件
+    tijiao.onclick = function(){
+        //将题目与答案记录下来
+        timu.innerHTML = timu.innerHTML + num1 + " + " + num2 + " = " + daan.value + "</br>";
+        //答题正确与错误判断
+        if(num1 + num2 == daan.value){
+            all += 10;
+            score.innerHTML = "得分：" + all;
+            buer.innerHTML = buer.innerHTML + "结果：对" + "</br>";
+        }else{
+            buer.innerHTML = buer.innerHTML + "结果：错" + "</br>";
+        }
+        //提交后重新分配两个值
+        num1 = parseInt(Math.random() * 101);
+        num2 = parseInt(Math.random() * 101);
+        number.innerHTML = num1 + "+" + num2 + "=";
+        daan.focus();
+        daan.value = null;
+    }
+    //答题记录事件
+    jilu.onclick = function(){
+        lastjilu.style.display = "inline-block";
+        timu.style.display = "inline-block";
+        buer.style.display = "inline-block";
+    }
+</script>
+</html>

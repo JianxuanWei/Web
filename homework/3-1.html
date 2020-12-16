@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id = "btn">随机点名</button>
+</body>
+<script>
+    var btn = document.getElementById("btn");
+    btn.onclick = function(){
+        var arr = ["张三", "李四", "王五", "赵六", "解耦"];
+        var index = parseInt(Math.random()*10) % arr.length;
+        console.log(arr[index]);
+    }
+</script>
+</html>

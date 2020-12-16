@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var arr = [["StudentNumber", "Chinese", "Math", "English", "TotalScore"]];
+    function student(studentnumber, chinese, math, english){
+        var student = {};
+        student.studentnumber = studentnumber;
+        student.chinese = chinese;
+        student.math = math;
+        student.english = english;
+        student.totalscore = chinese + math + english;
+        return student;
+    }
+    arr[1] = student(202001, 105, 62, 118);
+    arr[2] = student(202002, 89, 78, 120);
+    arr[3] = student(202003, 86, 64, 80);
+    arr[4] = student(202004, 78, 99, 91);
+    arr[5] = student(202005, 107, 97, 70);
+    arr[6] = student(202006, 112, 61, 92);
+    arr[7] = student(202007, 101, 79, 104);
+    arr[8] = student(202008, 71, 72, 105);
+    arr[9] = student(202009, 56, 68, 61);
+    arr[10] = student(202010, 98, 83, 77);
+    for(var i = 0; i < 10; i++){
+        for(var j = 0; j < 10 - i -1; j++){
+            if(arr[j + 1].totalscore < arr[j + 2].totalscore ){
+                var temp = arr[j + 1];
+                arr[j + 1] = arr[j + 2];
+                arr[j + 2] = temp;
+            }
+        }
+    }
+    document.write("<table border='1' cellspacing='0' width='400px'height='400'>")
+    document.write('<tr>');
+    for(var i = 0; i < 5; i++){
+        document.write('<td align = center>');
+        document.write(arr[0][i]);
+        document.write('</td>');
+    }
+    document.write('</tr>');
+    for(var i = 0; i < 10; i++){
+        document.write('<tr>');
+        document.write('<td align = center>');
+        document.write(arr[i + 1].studentnumber);
+        document.write('</td>');
+        document.write('<td align = center>');
+        document.write(arr[i + 1].chinese);
+        document.write('</td>');
+        document.write('<td align = center>');
+        document.write(arr[i + 1].math);
+        document.write('</td>');
+        document.write('<td align = center>');
+        document.write(arr[i + 1].english);
+        document.write('</td>');
+        document.write('<td align = center>');
+        document.write(arr[i + 1].totalscore);
+        document.write('</td>');
+        document.write('</tr>');
+    }
+</script>
+</html>

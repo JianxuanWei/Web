@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id = 'btn1'>输入名字</button>
+    <button id = 'btn2'>点名</button>
+</body>
+<script>
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var arr = [];
+    btn1.onclick = function(){
+        arr = prompt("请输入用户名");
+        arr = arr.split(",");
+        console.log(arr);
+    }
+    var i = 0, contact = 0, point;
+    btn2.onclick = function(){
+        if(contact == 0) {
+            point = setInterval(function() {
+                console.log(arr[i]);
+                i = (i + 1) % arr.length;
+            }, 500);
+            contact = 1;
+        } else {
+            clearInterval(point);
+            contact = 0;
+        }
+    }
+</script>
+</html>

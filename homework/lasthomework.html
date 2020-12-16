@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            overflow: hidden;
+        }
+        * {
+	        padding: 0;
+	        margin: 0;
+        }       
+        a{
+	        text-decoration: none;
+	        color: black;
+        }
+        ul{
+	        list-style-type: none;
+        }
+        .gensui{
+            width:10px; 
+            height:10px; 
+            position:absolute; 
+            top:0; 
+            left:0;
+        }
+        #neirong{
+            width: 500px;
+            height: 300px;
+        }
+        #beijing{
+            position: relative;
+            background-image: url("../picture/ouguan.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+        #picture{
+            position: absolute;
+            top: 50px;
+            right: 510px;
+            width: 500px;
+            height: 300px;
+            border: 1px solid black;
+        }
+        #suiji{
+            width: 502px;
+            height: 50px;
+            position: absolute;
+            top: 350px;
+            right: 510px;
+        }
+        #jieguo{
+            display: none;
+            border: 0;
+            font-size: 15px;
+            color: white;
+            width: 400px;
+            height:60px;
+            background: red;
+            position: absolute;
+            top: 200px;
+            right: 555px;
+        }
+        #qiumi{
+            display: none;
+            position: absolute;
+            color:cyan;
+            top: 300px;
+            left: 670px;
+            font-size: 50px;
+        }
+        #flower{
+            width: 50px;
+            height: 50px;
+        }
+        #denglu{
+            width: 100px;
+            height: 50px;
+            color: white;
+            font-size: 15px;
+            position: absolute;
+            top: 10px;
+            right: 5px;
+            background: tomato;
+            border: none;
+        }
+
+        .begin{
+            width:400px;
+            height: 250px;
+            position: absolute;
+            top: 200px;
+            left: 500px;
+        }
+        .customer{
+            border: 2px solid gray;
+            height: 60px;
+        }
+        .customer>input{
+            font-size: 20px;
+            border: 0;
+            width:300px;
+            height:50px;
+        }
+        .customer>input:focus{
+            outline: none;
+            background-color: none;
+        }
+        .password{
+            height: 60px;
+            border: 2px solid gray;
+        }
+        .password>input{
+            font-size: 20px;
+            border: 0;
+            width:300px;
+            height:50px;
+        }
+        .password>input:focus{
+            outline: none;
+            background-color: none;
+        }
+        #zhuce{
+            border: 0;
+            font-size: 15px;
+            color: white;
+            width: 400px;
+            height:60px;
+            background: red;
+        }
+        p{
+            color: gray;
+            font-size: 5px;
+            margin: 5px;
+            height: 15px;
+        }
+        #cusfuzhi{
+            position: absolute;
+            top: 250px;
+            left: 1000px;
+            color: red;
+            font-size: 20px;
+        }
+        #passfuzhi{
+            position: absolute;
+            top: 300px;
+            left: 1000px;
+            color: red;
+            font-size: 20px;
+        }
+        #right{
+            position: absolute;
+            top: 200px;
+            left: 1000px;
+            color: red;
+            font-size: 20px;
+        }
+        #yidong{
+            display: none;
+        }
+    </style>
+</head>
+<body id="beijing">
+    <div id="shizhong">
+		<img src="../picture/0.png" class="shijian"/>
+		<img src="../picture/0.png" class="shijian"/>
+		时
+		<img src="../picture/0.png" class="shijian"/>
+		<img src="../picture/0.png" class="shijian"/>
+		分
+		<img src="../picture/0.png" class="shijian"/>
+		<img src="../picture/0.png" class="shijian"/>
+		秒
+	</div>
+    <div id="yemian1">
+        <div id="picture">
+            <img src="../picture/bairen.jpg" id="neirong">
+        </div>
+        <div id="introduce">
+
+        </div>
+        <button id="suiji">开始随机/暂停</button>
+    </div>
+    <button id="jieguo">点击查看等级</button>
+    <button id="denglu">注册/登录</button>
+    <p id="qiumi"></p>
+    <div class="gensui">
+        <img src="../picture/flower.png" id="flower">
+    </div>
+    <div id="yidong">
+        <div class="begin">
+            <form>
+                <div class="customer">
+                    <span>用&nbsp户&nbsp名</span>
+                    <input type="text" id = "customer">
+                </div>
+                <p id = "custs"> </p>
+                <div class="password">
+                    <span>设置密码</span>
+                    <input type="password" id = "password">
+                </div>
+                <p id = "passts"> </p>
+                <input type="button" value="立即注册" id="zhuce">
+            </form>
+        </div>
+        <p id="cusfuzhi"></p>
+        <p id="passfuzhi"></p>
+        <p id="right"> </p>
+    </div>
+</body>
+<script>
+    var tishi = document.getElementById("right");
+    var customer = document.getElementById("customer");
+    var password = document.getElementById("password");
+    var custs = document.getElementById("custs");
+    var passts = document.getElementById("passts");
+    var cusfuzhi = document.getElementById("cusfuzhi");
+    var passfuzhi = document.getElementById("passfuzhi");
+    var zhuce = document.getElementById("zhuce");
+    var suiji = document.getElementById("suiji");
+    var neirong = document.getElementById("neirong");
+    var yemian1 = document.getElementById("yemian1");
+    var jieguo = document.getElementById("jieguo");
+    var qiumi = document.getElementById("qiumi");
+    var denglu = document.getElementById("denglu");
+    var yidong = document.getElementById("yidong");
+    //随机背景图片
+    var suiji1 = setInterval(function(){
+        var beijing = document.getElementById("beijing");
+        var arr = ["../picture/cluo.jpg","../picture/salahe.jpeg","../picture/meixi.jpg","../picture/pike.jpg"];
+        var num1 = parseInt(Math.random() * 10 % 4);
+        var pic = arr[num1];
+        beijing.style.backgroundImage = "url("+pic+")";
+    },4000);
+    //随机框内图片
+    var arr1 = ["../picture/bairen.jpg","../picture/bali.jpg","../picture/basa.jpg","../picture/beijing.jpg","../picture/duote.jpg","../picture/huangma.jpg","../picture/liwupu.jpg","../picture/mancheng.jpg","../picture/manlian.jpg","../picture/tianjin.jpg"];
+    var arr2 = ["拜仁慕尼黑","巴黎圣日尔曼","巴塞罗那","北京国安","多特蒙德","皇家马德里","利物浦","曼城","曼联","天津泰达"];
+    var i = 0, defen = 0, j = 1;
+    var qiudui, num2;
+    suiji.onclick = function(){
+        //点击随机图片
+       if(i == 0 && j < 6){
+            qiudui = setInterval(function(){
+                num2 = parseInt(Math.random() * 10);
+                var pic1 = arr1[num2];
+                neirong.src = pic1;
+            }, 100);
+            i = 1;
+        //点击暂停，回答问题
+        }else if(i == 1 && j < 6){
+            clearInterval(qiudui);
+            var result = prompt("请输入俱乐部名称", "");
+            console.log(result);
+            if(result == arr2[num2]){
+                defen += 10;
+                console.log(defen);
+            }
+            j++;
+            i = 0;
+        }
+        //答题五次，显示结果
+        else if(j == 6){
+            yemian1.style.display = "none";
+            jieguo.style.display = "inline-block";
+        }
+    }
+    //点击显示结果
+    jieguo.onclick = function(){
+        if(defen <= 10){
+            qiumi.innerHTML= "萌新球迷";
+        }else if(defen == 20){
+            qiumi.innerHTML= "新晋球迷";
+        }else if(defen >= 30 && defen <= 40){
+            qiumi.innerHTML= "老球迷";
+        }else{
+            qiumi.innerHTML= "资深球迷";
+        }
+        qiumi.style.display = "inline-block";
+    }
+    //设置时钟
+    setInterval(function(){
+		var now = new Date();
+		var h = now.getHours();
+		var m = now.getMinutes();
+		var s = now.getSeconds();
+        var h1 = (parseInt)(h /10);
+        var h2 = h % 10;
+        var m1 = (parseInt)(m /10);
+        var m2 = m % 10;
+        var s1 = (parseInt)(s /10);
+        var s2 = s % 10;
+        var imgs = document.getElementsByClassName("shijian");
+        imgs[0].src = "../picture/" + h1 + ".png";
+        imgs[1].src = "../picture/" + h2 + ".png";
+        imgs[2].src = "../picture/" + m1 + ".png";
+        imgs[3].src = "../picture/" + m2 + ".png";
+        imgs[4].src = "../picture/" + s1 + ".png";
+        imgs[5].src = "../picture/" + s2 + ".png";
+    }, 1000);
+    //鼠标跟随设置
+    //使用鼠标的移动事件
+	document.onmousemove=function(ev){
+		var aDiv=document.getElementsByClassName('gensui');
+		var oEvent=ev||event;
+		//最后将鼠标位置赋给第一个
+		aDiv[0].style.left=oEvent.clientX + 10 +'px'
+		aDiv[0].style.top=oEvent.clientY -30+'px'
+    }
+    //设置登录点击事件
+    denglu.onclick = function(){
+        beijing.style.background = "none";
+        clearInterval(suiji1);
+        yemian1.style.display = "none";
+        yidong.style.display = "inline-block";
+    }
+    //设置登陆界面
+    customer.onfocus = function(){
+        custs.innerHTML = "支持中文数字";
+    }
+    customer.onblur = function(){
+        if(customer.value == ""){
+            custs.innerHTML = "用户名不能为空";
+        }
+        else{
+            custs.innerHTML = "";
+        }
+    }
+    password.onfocus = function(){
+        passts.innerHTML = "建议使用两种字符组合";
+    }
+    password.onblur = function(){
+        if(password.value == ""){
+            passts.innerHTML = "密码不能为空";
+        }
+        else{
+            passts.innerHTML = "";
+        }
+    }
+    zhuce.onclick = function(){
+        if(customer.value != "" && password.value != ""){
+            var str = "注册成功！";
+            cusfuzhi.innerHTML = "用户名：" + customer.value;
+            passfuzhi.innerHTML = "密码：" + password.value;
+            right.innerText = str;
+        }
+    }
+</script>
+</html>

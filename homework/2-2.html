@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function delta(line){
+        var sum = 0;
+        for(var i = 1; i <= line; i++){
+            for(var j = 0; j < 2 * i - 1;j++){
+                document.write("*");
+            }
+            sum += 2 * i - 1;
+            document.write("</br>");
+        }
+        document.write("共打印" + sum + "个*");
+    }
+    delta(15);
+</script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function change(m){
+        var str = '"hello,world,nice,to,meet,you"';
+        var newStr = new Array();
+        newStr = str.split(",");
+        var str2 = newStr.join(m);
+        document.write(str2);
+    }
+    change("*");
+    change("-");
+</script>
+</html>

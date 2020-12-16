@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .begin{
+            width:400px;
+            height: 250px;
+            position: absolute;
+            top: 200px;
+            left: 500px;
+        }
+        .customer{
+            border: 2px solid gray;
+            height: 60px;
+        }
+        .customer>input{
+            font-size: 20px;
+            border: 0;
+            width:300px;
+            height:50px;
+        }
+        .customer>input:focus{
+            outline: none;
+            background-color: none;
+        }
+        .password{
+            height: 60px;
+            border: 2px solid gray;
+        }
+        .password>input{
+            font-size: 20px;
+            border: 0;
+            width:300px;
+            height:50px;
+        }
+        .password>input:focus{
+            outline: none;
+            background-color: none;
+        }
+        #zhuce{
+            border: 0;
+            font-size: 15px;
+            color: white;
+            width: 400px;
+            height:60px;
+            background: red;
+        }
+        p{
+            color: gray;
+            font-size: 5px;
+            margin: 5px;
+            height: 15px;
+        }
+        #cusfuzhi{
+            position: absolute;
+            top: 250px;
+            left: 700px;
+            color: red;
+            font-size: 20px;
+        }
+        #passfuzhi{
+            position: absolute;
+            top: 300px;
+            left: 700px;
+            color: red;
+            font-size: 20px;
+        }
+        #right{
+            position: absolute;
+            top: 200px;
+            left: 700px;
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="begin">
+        <form>
+            <div class="customer">
+                <span>用&nbsp户&nbsp名</span>
+                <input type="text" id = "customer">
+            </div>
+            <p id = "custs"> </p>
+            <div class="password">
+                <span>设置密码</span>
+                <input type="password" id = "password">
+            </div>
+            <p id = "passts"> </p>
+            <input type="button" value="立即注册" id="zhuce">
+        </form>
+    </div>
+    <p id="cusfuzhi"></p>
+    <p id="passfuzhi"></p>
+    <p id="right"> </p>
+</body>
+<script>
+    var tishi = document.getElementById("right");
+    var customer = document.getElementById("customer");
+    var password = document.getElementById("password");
+    var custs = document.getElementById("custs");
+    var passts = document.getElementById("passts");
+    var cusfuzhi = document.getElementById("cusfuzhi");
+    var passfuzhi = document.getElementById("passfuzhi");
+    var zhuce = document.getElementById("zhuce");
+    customer.onfocus = function(){
+        custs.innerHTML = "支持中文数字";
+    }
+    customer.onblur = function(){
+        if(customer.value == ""){
+            custs.innerHTML = "用户名不能为空";
+        }
+        else{
+            custs.innerHTML = "";
+        }
+    }
+    password.onfocus = function(){
+        passts.innerHTML = "建议使用两种字符组合";
+    }
+    password.onblur = function(){
+        if(password.value == ""){
+            passts.innerHTML = "密码不能为空";
+        }
+        else{
+            passts.innerHTML = "";
+        }
+    }
+    zhuce.onclick = function(){
+        if(customer.value != "" && password.value != ""){
+            var str = "注册成功！";
+            cusfuzhi.innerHTML = "用户名：" + customer.value;
+            passfuzhi.innerHTML = "密码：" + password.value;
+            right.innerText = str;
+        }
+    }
+</script>
+</html>

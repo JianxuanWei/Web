@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #first{
+            display:block;
+        }
+        #first .box1{
+            background-color: rgb(233, 233, 233);
+            height:400px;
+            width:400px;
+            margin:0 auto;
+            position:relative;
+        }
+        #first .box2{
+            height:360px;
+            width:360px;
+            border:1px solid hotpink; 
+            position: absolute;
+            top:20px;
+            left:20px;
+        }
+        #first #box3{
+            position: absolute;
+            border: 2px solid rgb(219, 148, 148);
+            display:block;
+            top:110px;
+            left:66px;
+            height:260px;
+            width:240px;
+            overflow:auto;
+            display:none;
+        }
+        #btn1{
+            height:20px;
+            width:70px;
+            margin-left:93px;
+            margin-top:60px;
+            padding:1px;
+            font-weight: bold;
+            font-size:13px;
+        }
+        #btn2{
+            height:20px;
+            width:70px;
+            margin-top:60px;
+            margin-right:80px;
+            padding:1px;
+            font-weight: bold;
+            font-size:13px;
+        }
+        #second{
+            display:none;
+        }
+        #second .box1{
+            background-color: rgb(233, 233, 233);
+            height:400px;
+            width:400px;
+            margin:0 auto;
+            position:relative;
+        }
+        #second .box2{
+            height:360px;
+            width:360px;
+            /* border:1px solid hotpink; */
+            position: absolute;
+            top:20px;
+            left:20px; 
+        }
+        #second .left{
+            display:inline-block;
+        }
+        #box2 .left{
+            position:absolute;
+            top:10px;
+        } 
+        #second .right{
+            position:absolute;
+            top:10px;
+            right:20px;
+        }
+        #second .box3{
+            position:absolute;
+            top:100px;
+            margin:0 auto;
+            left:20px;
+        }
+        #btn3{
+            position:absolute;
+            top:180px;
+            left:20px;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="first">
+        <div class="box1">
+            <div class="box2">
+                <button id="btn1">开始答题<tton>
+                <button id="btn2">答题记录<tton>
+            </div>
+            <div id="box3">
+            </div>
+        </div>
+    </div>
+    <div id="second">
+        <div class="box1">
+            <div class="box2">
+                <p class="left"></p>
+                <p class="right"></p>
+            </div>
+            <div class="box3">
+                <p class="left"></p>
+                <input type="text" id="result">
+            </div>
+            <button id="btn3">提交答案<tton>
+        </div>
+    </div>
+</body>
+<script>
+    var sum, num, num1, num2, grade;
+    var arr1 = new Array();
+    var arr2 = new Array();
+    var arr3 = new Array();
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var btn3 = document.getElementById("btn3");
+    var first = document.getElementById("first");
+    var second = document.getElementById("second");
+    var result = document.getElementById("result");
+    var box3 = document.getElementById("box3");
+    var left = document.getElementsByClassName("left"); 
+    var right = document.getElementsByClassName("right");
+    var right = document.getElementsByClassName("right");
+
+    btn1.onclick = function(){
+        arr1 = [];
+        arr2 = [];
+        arr3 = [];
+        box3.style.display="none";
+        first.style.display = "none";
+        second.style.display = "block";
+        result.focus();
+        var timer = 29; 
+        grade = 0;
+        left[0].innerHTML = "倒计时:" + timer + "s";
+        var circulation = setInterval(function(){
+            --timer;
+            left[0].innerHTML = "倒计时:" + timer + "s";
+            if(timer == 0){
+            clearInterval(circulation);
+            first.style.display = "block";
+            second.style.display = "none";
+        }
+        },1000)
+        right[0].innerHTML = "得分：" + grade;
+        num3 = Math.random();
+        num4 = Math.random();
+        num1 = Math.round(num3*100);
+        num2 = Math.round(num4*100);
+        sum = num1 + num2;
+        arr1.push(num1);
+        arr2.push(num2);
+        left[1].innerHTML = num1 + "+" + num2 + "=";
+        btn3.onclick = function(){
+        result.focus();
+        var tag = result.value;
+        arr3.push(tag);
+        result.value = "";
+        if(tag == sum){
+            grade = grade+10;
+        }
+        right[0].innerHTML = "得分：" + grade;
+        num5 = Math.random();
+        num6 = Math.random();
+        num1 = Math.round(num5*100);
+        num2 = Math.round(num6*100);
+        arr1.push(num1);
+        arr2.push(num2);
+        sum = num1 + num2;
+        left[1].innerHTML = num1 + "+" + num2 + "=";
+        }
+    }
+    btn2.onclick = function(){
+        box3.style.display="block";
+        box3.innerHTML = "";
+        var count = arr1.length;
+        for(var i = 0;i<count - 1;i++){
+            var p=document.createElement("p");
+            // p.innerHTML = arr1[i] + "+" + arr2[i] + "=" + arr3[i]; 
+            var live = arr1[i] + arr2[i];
+            if(live == arr3[i]){
+                p.innerHTML = arr1[i] + "+" + arr2[i] + "=" + arr3[i] +" "+ "结果：对" + "</br>";
+                box3.innerHTML = box3.innerHTML + p.innerHTML;  
+            }else{
+                p.innerHTML = arr1[i] + "+" + arr2[i] + "=" + arr3[i] +" "+ "结果：错" + "</br>";
+                box3.innerHTML = box3.innerHTML + p.innerHTML;  
+            }
+        }
+    }
+</script>
+</html>

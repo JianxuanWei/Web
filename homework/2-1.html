@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function count(){
+        var sum = 0;
+        var num = new Array();
+        for(var i = 0; i < 9; i++){
+            num[i] = parseInt(Math.random() * 10);
+            sum += num[i];
+            document.write(num[i] + "+");
+        }
+        num[9] = parseInt(Math.random() * 10);
+        sum += num[9];
+        document.write(num[9] + "=" + sum);
+    }
+    count();
+</script>
+</html>
